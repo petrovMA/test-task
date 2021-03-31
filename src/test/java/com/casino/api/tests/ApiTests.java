@@ -30,7 +30,7 @@ public class ApiTests extends ApiBase {
                                 .setEmail(userName + "@tst.com")
                                 .setName("Tester")
                                 .setSurname("Testovich")
-                             // .setCurrencyCode("USD") todo:: Is it Bug??
+                                .setCurrencyCode("USD") // todo:: Is it Bug??
                 )
         )
                 .statusCode(201)

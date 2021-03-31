@@ -29,12 +29,12 @@ public abstract class ApiBase extends AutotestBase {
     protected int port;
 
     public ApiBase() {
-        protocol = config.getString("autotests.protocol");
-        server = config.getString("autotests.server");
-        version = config.getString("autotests.version");
-        port = config.getInt("autotests.port");
-        basicName = config.getString("autotests.basic_auth_name");
-        basicPass = config.getString("autotests.basic_auth_pass");
+        protocol = config.getString("autotests.api.protocol");
+        server = config.getString("autotests.api.server");
+        version = config.getString("autotests.api.version");
+        port = config.getInt("autotests.api.port");
+        basicName = config.getString("autotests.api.basic_auth_name");
+        basicPass = config.getString("autotests.api.basic_auth_pass");
     }
 
 
