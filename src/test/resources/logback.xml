@@ -35,7 +35,7 @@
         </encoder>
     </appender>
 
-    <root level="debug">
+    <root level="info">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="TestNG" />
         <appender-ref ref="FILE-ROLLING"/>

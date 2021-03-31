@@ -18,7 +18,6 @@ import java.util.stream.Collectors;
 import static org.assertj.core.api.Assertions.*;
 
 public class PlayersPage {
-    private final Logger log = LoggerFactory.getLogger(this.getClass());
     WebDriver driver;
 
     @FindBy(xpath = "//*[@id = 'payment-system-transaction-grid_c1']//a[text()='Username']")
@@ -55,6 +54,6 @@ public class PlayersPage {
 
         assertThat(actualNames)
                 .as("List of Players wrong sorted by 'Username'")
-                .isSortedAccordingTo(String::compareTo);
+                .isSortedAccordingTo(String::compareTo);  // todo:: Is it Bug??
     }
 }
