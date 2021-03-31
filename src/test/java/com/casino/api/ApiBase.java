@@ -1,29 +1,26 @@
-package rest.service;
+package com.casino.api;
 
-import com.typesafe.config.Config;
-import com.typesafe.config.ConfigFactory;
+import com.casino.AutotestBase;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import org.apache.commons.lang3.tuple.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import rest.service.dto.request.AuthGuestRequest;
-import rest.service.dto.request.AuthPlayerRequest;
-import rest.service.dto.response.AuthResponse;
-import rest.service.lib.RestAssuredOperationLog;
+import com.casino.api.dto.request.AuthGuestRequest;
+import com.casino.api.dto.request.AuthPlayerRequest;
+import com.casino.api.dto.response.AuthResponse;
+import com.casino.api.lib.RestAssuredOperationLog;
 
-import java.io.File;
 import java.util.Base64;
 import java.util.function.Function;
 
-import static rest.service.lib.HttpMethods.*;
-import static rest.service.lib.Rest.restAssured;
+import static com.casino.api.lib.HttpMethods.*;
+import static com.casino.api.lib.Rest.restAssured;
 
-public abstract class AutomationBase {
+public abstract class ApiBase extends AutotestBase {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-    protected Config config;
     protected String protocol;
     protected String server;
     protected String version;
@@ -31,8 +28,7 @@ public abstract class AutomationBase {
     protected String basicName;
     protected int port;
 
-    public AutomationBase() {
-        config = ConfigFactory.parseFile(new File("autotests.conf"));
+    public ApiBase() {
         protocol = config.getString("autotests.protocol");
         server = config.getString("autotests.server");
         version = config.getString("autotests.version");

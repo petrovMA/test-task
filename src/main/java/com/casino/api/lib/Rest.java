@@ -1,11 +1,11 @@
-package rest.service.lib;
+package com.casino.api.lib;
 
+import com.casino.api.exeptions.HttpMethodNotFoundException;
 import io.restassured.RestAssured;
 import io.restassured.parsing.Parser;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import org.apache.commons.lang3.tuple.Pair;
-import rest.service.exeptions.HttpMethodNotFoundException;
 
 import java.util.function.Function;
 

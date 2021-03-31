@@ -1,4 +1,4 @@
-package rest.service.lib;
+package com.casino.api.lib;
 
 public enum HttpMethods {
     GET,

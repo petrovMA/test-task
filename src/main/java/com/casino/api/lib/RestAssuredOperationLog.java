@@ -1,4 +1,4 @@
-package rest.service.lib;
+package com.casino.api.lib;
 
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;

@@ -1,4 +1,4 @@
-package rest.service.dto.response;
+package com.casino.api.dto.response;
 
 import com.google.gson.annotations.SerializedName;
 

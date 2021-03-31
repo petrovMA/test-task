@@ -1,13 +1,13 @@
-package rest.service.tests;
+package com.casino.api.tests;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
-import rest.service.AutomationBase;
-import rest.service.dto.request.PlayerRegisterRequest;
-import rest.service.dto.response.PlayerResponse;
+import com.casino.api.ApiBase;
+import com.casino.api.dto.request.PlayerRegisterRequest;
+import com.casino.api.dto.response.PlayerResponse;
 
-public class ApiTests extends AutomationBase {
+public class ApiTests extends ApiBase {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Test(testName = "Register new player")
