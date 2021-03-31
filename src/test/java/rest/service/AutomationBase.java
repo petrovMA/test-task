@@ -7,9 +7,13 @@ import io.restassured.specification.RequestSpecification;
 import org.apache.commons.lang3.tuple.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import rest.service.dto.request.AuthGuestRequest;
+import rest.service.dto.request.AuthPlayerRequest;
+import rest.service.dto.response.AuthResponse;
 import rest.service.lib.RestAssuredOperationLog;
 
 import java.io.File;
+import java.util.Base64;
 import java.util.function.Function;
 
 import static rest.service.lib.HttpMethods.*;
@@ -64,5 +68,50 @@ public abstract class AutomationBase {
         ));
 
         return result.getLeft();
+    }
+
+
+    protected String getGuestAccessToken() {
+        return restPost(
+                "/oauth2/token",
+                request ->
+                        request
+                                .auth()
+                                .preemptive()
+                                .basic(basicName, basicPass)
+                                .body(
+                                        new AuthGuestRequest()
+                                                .setGrantType("client_credentials")
+                                                .setScope("guest:default"))
+        )
+                .statusCode(200)
+                .extract()
+                .body()
+                .as(AuthResponse.class)
+                .getAccessToken();
+    }
+
+
+    protected String getPlayerAccessToken(String userName, String base64Pass) {
+        return restPost("/oauth2/token", request -> request
+                .auth()
+                .preemptive()
+                .basic(basicName, basicPass)
+                .body(new AuthPlayerRequest()
+                        .setGrantType("password")
+                        .setPassword(base64Pass)
+                        .setUsername(userName)
+                )
+        )
+                .statusCode(200)
+                .extract()
+                .body()
+                .as(AuthResponse.class)
+                .getAccessToken();
+    }
+
+
+    protected String encodeToBase64(String input) {
+        return Base64.getEncoder().encodeToString(input.getBytes());
     }
 }
